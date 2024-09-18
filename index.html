@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>Image gallery zsk</title>
+<style>
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .large-image {
+    width: 100%;
+    max-width: 500px; 
+    margin-bottom: 20px;
+    position: relative;
+  }
+  .small-images {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    max-width: 500px; 
+  }
+  .small-image {
+    width: 30%;
+    cursor: pointer;
+  }
+  .header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .button {
+    position: absolute;
+    top: 10;
+    left: 50;
+    margin-bottom: 0;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Image gallery</h1>
+</div>
+
+<div class="container">
+  <img id="largeImage" class="large-image" src="clouds.jpg" alt="大图片">
+  <div class="small-images">
+    <img class="small-image" src="clouds.jpg" alt="小图片1" onclick="changeLargeImage('clouds.jpg')">
+    <img class="small-image" src="sunrise.jpg" alt="小图片2" onclick="changeLargeImage('sunrise.jpg')">
+    <img class="small-image" src="sunset.jpg" alt="小图片3" onclick="changeLargeImage('sunset.jpg')">
+    <img class="small-image" src="fields.jpg" alt="小图片4" onclick="changeLargeImage('fields.jpg')">
+    <img class="small-image" src="street.jpg" alt="小图片5" onclick="changeLargeImage('street.jpg')">
+  </div>
+  <button id="brightnessButton" class="button" onclick="toggleBrightness()">lighten</button>
+</div>
+
+<script>
+  function changeLargeImage(src) {
+    document.getElementById('largeImage').src = src;
+  }
+
+  function toggleBrightness() {
+    var image = document.getElementById('largeImage');
+    if (image.style.filter === 'brightness(50%)') {
+      image.style.filter = 'brightness(100%)';
+      document.getElementById('brightnessButton').innerText = 'lighten';
+    } else {
+      image.style.filter = 'brightness(50%)';
+      document.getElementById('brightnessButton').innerText = 'darken';
+    }
+  }
+</script>
+
+</body>
+</html>
